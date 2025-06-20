@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 //SQL 중심의 데이터 접근 프레임워크
 // -> 내가 직접 SQL문 작성하고, 그 결과를 JAVA 객체로 매핑
 //SQL을 직접짜기 때문에 완전히 통제 가능 (자유도 높음), 대신 코드가 복잡하고 반복적이다
-//
+
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -48,5 +49,6 @@ public class UserController {
     public ResponseEntity<?> removeUser(@RequestParam Integer userId) {
         return ResponseEntity.ok(userService.removeUser(userId));
     }
+
 
 }
