@@ -10,8 +10,8 @@ package com.koreait.dbms_study.controller;
 //단점 => 복잡한 쿼리는 어렵고 추적/디버깅이 까다롭다.
 
 import com.koreait.dbms_study.dto.AddPostReqDto;
+import com.koreait.dbms_study.dto.EditPostReqDto;
 import com.koreait.dbms_study.service.PostJpaService;
-import jakarta.persistence.GeneratedValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +28,19 @@ public class PostJpaController {
         return ResponseEntity.ok(postJpaService.addPost(addPostReqDto));
     }
 
-//    @GetMapping("/get/list")
-//    public ResponseEntity<?> getPostList() {
-//        return ResponseEntity.of(postJpaService.getPostList());
-//    }
+    @GetMapping("/get/list")
+    public ResponseEntity<?> getPostList() {
+        return ResponseEntity.ok(postJpaService.getPostList());
+    }
+
+    @PostMapping("/edit")
+    public ResponseEntity<?> editPostList(@RequestBody EditPostReqDto editPostReqDto) {
+        return ResponseEntity.ok(postJpaService.editPost(editPostReqDto));
+    }
+
+    @PostMapping("/remove")
+    public ResponseEntity<?> removePost(@RequestParam Integer postId) {
+        return ResponseEntity.ok(postJpaService.removePost(postId));
+    }
+
 }
